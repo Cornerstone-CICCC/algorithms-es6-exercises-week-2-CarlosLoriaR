@@ -8,8 +8,25 @@ Create a function named multiplicationTable that receives a number maxValue as i
 */
 
 const multiplicationTable = function (maxValue) {
-  // Your code here
+  let table = "";
+
+  for (let row = 1; row <= maxValue; row++) {
+    let line = "";
+    for (let col = 1; col <= maxValue; col++) {
+      line += (row * col);
+      if (col < maxValue) {
+        line += " ";
+      }
+    }
+    table += line;
+    if (row < maxValue) {
+      table += "\n";
+    }
+  }
+
+  return table;
 };
+
 
 console.log(multiplicationTable(1));
 // 1

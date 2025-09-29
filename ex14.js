@@ -23,9 +23,31 @@ Penny (1¢)
 */
 
 const calculateChange = function (total, cash) {
-  // Your code here
-};
+  let change = cash - total; // el cambio que debemos regresar
+  const result = {};
 
+  const denominations = {
+    twentyDollar: 2000,
+    tenDollar: 1000,
+    fiveDollar: 500,
+    twoDollar: 200,
+    oneDollar: 100,
+    quarter: 25,
+    dime: 10,
+    nickel: 5,
+    penny: 1,
+  };
+
+  for (let coin in denominations) {
+    if (change >= denominations[coin]) {
+      let count = Math.floor(change / denominations[coin]);
+      result[coin] = count;
+      change -= count * denominations[coin];
+    }
+  }
+
+  return result;
+};
 console.log(calculateChange(1787, 2000)); // { twoDollar: 1, dime: 1, penny: 3 }
 console.log(calculateChange(2623, 4000)); // { tenDollar: 1, twoDollar: 1, oneDollar: 1, quarter: 3, penny: 2 }
 console.log(calculateChange(501, 1000)); // { twoDollar: 2, quarter: 3, dime: 2, penny: 4 }

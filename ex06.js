@@ -20,7 +20,23 @@ Note: There may be multiple available spots for a particular vehicle. It does no
 */
 
 const whereCanIPark = function (spots, vehicle) {
-  // Code here!
+  let column, row
+  let allowedSpots = []
+  if (vehicle === "regular") {
+    allowedSpots = ["R"]
+  } else if (vehicle === "small") {
+    allowedSpots = ["R", "S"]
+  } else if (vehicle === "motorcycle") {
+    allowedSpots = ["R", "S", "M"]
+  }
+  for (let rows = 0; rows < spots.length; rows++) {
+    for (let columns = 0; columns < spots[rows].length; columns++) {
+      if (allowedSpots.includes(spots[rows][columns])) {
+        return [columns, rows]
+      }
+    }
+  }
+  return false
 };
 
 console.log(

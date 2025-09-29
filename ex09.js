@@ -9,11 +9,27 @@ Create a function named camelCase that will convert a string to camel case, and 
 */
 
 const camelCase = function (input) {
-  // Your code here
+  let result = "";
+  let capitalizeNext = false;
+
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+
+    if (char === " ") {
+      capitalizeNext = true;
+    } else {
+      if (capitalizeNext) {
+        result += char.toUpperCase();
+        capitalizeNext = false;
+      } else {
+        result += char;
+      }
+    }
+  }
+
+  return result;
 };
 
 console.log(camelCase("this is a string")); // thisIsAString
-console.log(camelCase("loopy cornerstone")); //loopyCornerstone
+console.log(camelCase("loopy cornerstone")); // loopyCornerstone
 console.log(camelCase("supercalifragalisticexpialidocious")); // supercalifragalisticexpialidocious
-
-module.exports = camelCase;

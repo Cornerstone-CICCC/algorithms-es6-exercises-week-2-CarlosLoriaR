@@ -6,8 +6,11 @@ Create a function named conditionalSum that will be given an array of numbers an
 
 */
 
+let remainder
 const conditionalSum = function (values, condition) {
-  // Your code here
+  remainder = condition === "even" ? 0 : 1
+  const addedNumbers = values.filter((number) => number % 2 === remainder).reduce((total, curr) => total + curr, 0)
+  return addedNumbers
 };
 
 console.log(conditionalSum([1, 2, 3, 4, 5], "even")); // 6
